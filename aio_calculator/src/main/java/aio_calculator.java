@@ -133,7 +133,12 @@ public class aio_calculator extends javax.swing.JFrame {
         passphrase = String.valueOf(jPasswordField1.getPassword());
         
         if(username.equals("enkidu") && passphrase.equals("enkidu")){
-            JOptionPane.showMessageDialog(this, "success");
+            menu_frame m1 = new menu_frame();
+            m1.setVisible(true);
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Login failed. Try again with correct credentials.");
         }
         
         
