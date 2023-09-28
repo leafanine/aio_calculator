@@ -1,6 +1,25 @@
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
+class NumericKeyAdapter extends KeyAdapter {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        javax.swing.JTextField textField = (JTextField) e.getSource();
+        String text = textField.getText();
+        
+        if (!isValidInput(c, text)) {
+            e.consume(); // Consume the key event if the input is not valid
+        }
+    }
+    
+    private boolean isValidInput(char c, String text) {
+        // Allow digits, decimal point, and negative sign
+        return (Character.isDigit(c) || c == '.' || (c == '-' && text.isEmpty() && text.indexOf('-') == -1));
+    }
+}
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
