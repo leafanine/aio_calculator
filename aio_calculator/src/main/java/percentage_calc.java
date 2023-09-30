@@ -1,6 +1,14 @@
 
 import static java.lang.Float.valueOf;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
+
+
+
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -65,6 +73,29 @@ public class percentage_calc extends javax.swing.JFrame {
 
         jLabel7.setText("Programming:");
 
+        jTextField1.addKeyListener(new NumericKeyAdapter());
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new NumericKeyAdapter());
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.addKeyListener(new NumericKeyAdapter());
+
+        jTextField4.addKeyListener(new NumericKeyAdapter());
+
+        jTextField5.addKeyListener(new NumericKeyAdapter());
+
+        jTextField6.addKeyListener(new NumericKeyAdapter());
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Calculate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +103,7 @@ public class percentage_calc extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setText("EXIT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +111,7 @@ public class percentage_calc extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(51, 204, 255));
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,22 +158,22 @@ public class percentage_calc extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 299, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(115, 115, 115)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 36, Short.MAX_VALUE)))))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField7)))))
                 .addGap(13, 13, 13)
                 .addComponent(jButton2)
                 .addGap(31, 31, 31))
@@ -204,28 +237,17 @@ public class percentage_calc extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        float math= Float.parseFloat(jTextField1.getText());
-        float chemistry = Float.parseFloat(jTextField2.getText());
-        float physics = Float.parseFloat(jTextField3.getText());
-        float english = Float.parseFloat(jTextField4.getText());
-        float history = Float.parseFloat(jTextField5.getText());
-        float programming = Float.parseFloat(jTextField6.getText());
-        
-        if (math>=0 && math<=100 &&
-                chemistry >=0 && chemistry<=100 &&
-                physics >=0 && physics<=100 &&
-                english >=0 && english<=100 &&
-                history >=0 && history<=100 &&
-                programming>=0 && programming<=100){
-            float percentage;
-            float total;
-            total=(math+chemistry+physics+english+history+programming);
-            percentage=(float) ((total/600.0)*100.0);
-            jTextField7.setText(String.valueOf(percentage));
+        try {
             
+            float math= Float.parseFloat(jTextField1.getText());
+            float chemistry = Float.parseFloat(jTextField2.getText());
+            float physics = Float.parseFloat(jTextField3.getText());
+            float english = Float.parseFloat(jTextField4.getText());
+            float history = Float.parseFloat(jTextField5.getText());
+            float programming = Float.parseFloat(jTextField6.getText());
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Failed. Try again with correct values within range 0-100.");
+        catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Missing values. Try again.");
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
@@ -234,7 +256,94 @@ public class percentage_calc extends javax.swing.JFrame {
             jTextField6.setText("");
             jTextField7.setText("");
         }
+        finally{
+            float math= Float.parseFloat(jTextField1.getText());
+            float chemistry = Float.parseFloat(jTextField2.getText());
+            float physics = Float.parseFloat(jTextField3.getText());
+            float english = Float.parseFloat(jTextField4.getText());
+            float history = Float.parseFloat(jTextField5.getText());
+            float programming = Float.parseFloat(jTextField6.getText());
+            
+            if (math>=0 && math<=100 &&
+                chemistry >=0 && chemistry<=100 &&
+                physics >=0 && physics<=100 &&
+                english >=0 && english<=100 &&
+                history >=0 && history<=100 &&
+                programming>=0 && programming<=100){
+                float percentage;
+                float total;
+                total=(math+chemistry+physics+english+history+programming);
+                percentage=(float) ((total/600.0)*100.0);
+                jTextField7.setText(String.valueOf(percentage)+" %");
+            
+        }
+            else if (( math >100 ||
+                chemistry >100 ||
+                physics >100 ||
+                english >100 ||
+                history >100 ||
+                programming> 100) &&
+                    ( math <0 ||
+                chemistry <0 ||
+                physics <0 ||
+                english <0 ||
+                history <0 ||
+                programming<0)){
+                JOptionPane.showMessageDialog(this, "Out of range/Negative values detected. Try again.");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+                jTextField6.setText("");
+                jTextField7.setText("");
+            }
+            
+            else if ( math >100 ||
+                chemistry >100 ||
+                physics >100 ||
+                english >100 ||
+                history >100 ||
+                programming> 100){
+                //handling out of range values
+                JOptionPane.showMessageDialog(this, "Out of range values detected. Try again.");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+                jTextField6.setText("");
+                jTextField7.setText("");
+            }
+            
+            else if ( math <0 ||
+                chemistry <0 ||
+                physics <0 ||
+                english <0 ||
+                history <0 ||
+                programming<0){
+                //handling negative values
+                JOptionPane.showMessageDialog(this, "Negative values detected. Try again.");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+                jTextField6.setText("");
+                jTextField7.setText("");
+            }
+            
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
